@@ -1,7 +1,10 @@
 
-.container-1{
-    justify-content: center;
+div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
 }
-h2{
+h1{
     color: red;
 }
