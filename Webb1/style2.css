@@ -1,11 +1,13 @@
 body{
-    background-image: url("katt.jpg");
+    height: 100%;
+    margin: 0px
 }
 
 .firstdiv{
     background: black;
     width: 65%;
     margin: auto;
+    height: 100%;
 }
 
 .thirddiv{
