@@ -1,4 +1,16 @@
+body{
+    background-image: url("katt.jpg");
+}
 
+.firstdiv{
+    background: black;
+    width: 65%;
+    margin: auto;
+}
+
+.thirddiv{
+
+}
 div {
     display: flex;
     flex-direction: column;
@@ -6,5 +18,11 @@ div {
 
 }
 h1{
-    color: red;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h2{
+    color: white; 
+    display: inline-block;
 }
