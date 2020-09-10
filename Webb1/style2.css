@@ -1,6 +1,6 @@
-body{
+html, body{
     height: 100%;
-    margin: 0px
+    margin: 0px;
 }
 
 .firstdiv{
@@ -10,11 +10,36 @@ body{
     height: 100%;
 }
 
-.thirddiv{
-
+.seconddiv{
+    padding-top: 10px;
 }
+
+.thirddiv{
+    width: 500px;
+}
+
+.forthdiv {
+    display: inline-block; 
+    width: 200px;
+    height: 100px;
+    margin: 1em; 
+}
+.fifthdiv{
+    vertical-align: top;
+    float: right;
+}
+
+.sixthdiv{
+    vertical-align: top;
+    float: right;
+}
+
+.seventhdiv{
+    vertical-align: top;
+    float: right;
+}
+
 div {
-    display: flex;
     flex-direction: column;
     text-align: center;
 
