@@ -1,6 +1,7 @@
 html, body{
     height: 100%;
     margin: 0px;
+    background-image: url(""); 
 }
 
 .firstdiv{
@@ -16,6 +17,8 @@ html, body{
 
 .thirddiv{
     width: 100%;
+    border-color: red;
+    padding-top: 20px;
 }
 
 .forthdiv {
@@ -36,7 +39,12 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-h2{
+a{
     color: white; 
     display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+}
+a:hover{
+    color: plum;
 }
