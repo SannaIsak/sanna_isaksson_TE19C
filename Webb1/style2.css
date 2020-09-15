@@ -1,7 +1,11 @@
 html, body{
     height: 100%;
     margin: 0px;
-    background-image: url(""); 
+    padding: 0px;
+    background-size: cover;
+    background-image: url("20181228_135449.jpg"); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .firstdiv{
@@ -9,6 +13,7 @@ html, body{
     width: 65%;
     margin: auto;
     height: 100%;
+    padding-bottom: 5%;
 }
 
 .seconddiv{
@@ -16,9 +21,13 @@ html, body{
 }
 
 .thirddiv{
-    width: 100%;
-    border-color: red;
+    margin: auto;
+    width: 80%;
+    height: 8%;
     padding-top: 20px;
+    border-color: white;
+    border-style: double;
+
 }
 
 .forthdiv {
@@ -26,13 +35,15 @@ html, body{
     width: 20%;
     height: 100px;
     margin: auto; 
-    color: red;
 }
 
 div {
     
     text-align: center;
 
+}
+footer{
+    margin-bottom: 50px;
 }
 h1{
     color: white;
@@ -46,5 +57,9 @@ a{
     font-size: 20px;
 }
 a:hover{
-    color: plum;
+    color: gray;
+}
+
+p{
+    color: white;
 }
