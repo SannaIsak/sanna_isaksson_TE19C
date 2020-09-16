@@ -2,7 +2,7 @@ html, body{
     height: 100%;
     margin: 0px;
     padding: 0px;
-    padding-bottom: 60px;
+    padding-bottom: 200px;
     background-size: cover;
     background-image: url("20181228_135449.jpg"); 
     background-repeat: no-repeat;
@@ -14,7 +14,7 @@ html, body{
     width: 65%;
     margin: auto;
     height: 96%;
-    padding-bottom: 5%;
+    padding-bottom: 25%;
     position: relative;
 }
 
@@ -45,6 +45,19 @@ html, body{
     padding-right: 50px;
 }
 
+.sixthdiv{
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.seventhdiv{
+
+}
+.img1{
+    width: 400px;
+}
+
 div {
     
     text-align: center;
@@ -61,6 +74,7 @@ h1{
     color: white;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 30px;
+    align-items: center;
 }
 
 a{
