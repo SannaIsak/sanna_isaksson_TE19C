@@ -61,7 +61,20 @@ html, body{
     width: 400px;
 }
 
+.imgdiv-inside{
+    width: 50%;
+}
+
+.imgdiv-around{
+    display: flex;
+    padding-top: 5px;
+}
+
 .img2{
+    width: 200px;
+}
+
+.img3{
     width: 200px;
 }
 
