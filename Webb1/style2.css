@@ -4,16 +4,21 @@ html, body{
     padding: 0px;
     padding-bottom: 200px;
     background-size: cover;
-    background-image: url("20181228_135449.jpg"); 
+    background-image: url("/Webb1/CV-Bilder/20181228_135449.jpg"); 
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+@font-face{
+    font-family: quicksand;
+    src: url(quicksand/Quicksand_Light.otf)
+}
 
 .firstdiv{
-    background: black;
+    background:#3E3E3E;
     width: 65%;
     margin: auto;
-    height: 96%;
+    margin-bottom: 5%;
+    height: auto;
     padding-bottom: 25%;
     position: relative;
 }
@@ -25,7 +30,6 @@ html, body{
 .thirddiv{
     margin: auto;
     width: 80%;
-    height: 8%;
     padding-top: 20px;
     border-color: white;
     border-style: double;
@@ -34,8 +38,8 @@ html, body{
 
 .forthdiv {
     display: inline-block; 
-    width: 20%;
-    height: 100px;
+    width: 23%;
+    height: 50px;
     margin: auto; 
 }
 
@@ -49,13 +53,8 @@ html, body{
     padding-top: 20px;
     padding-left: 50px;
     padding-right: 50px;
+    padding-bottom: 10px;
 }
-
-.seventhdiv{
-
-}
-
-
 
 .img1{
     width: 400px;
@@ -84,7 +83,7 @@ div {
 
 }
 footer{
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     position: absolute;
     bottom: 0px;
     width: 100%;
@@ -92,7 +91,7 @@ footer{
 }
 h1{
     color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: quicksand;
     font-size: 30px;
     align-items: center;
 }
@@ -102,19 +101,23 @@ a{
     display: inline-block;
     text-decoration: none;
     font-size: 20px;
+    font-family: quicksand;
 }
 .a1{
     font-size: 15px;
+    text-decoration: underline;
 }
 a:hover{
-    color: gray;
+    color: #ACACAC;
 }
 
 p{
     color: white;
     font-size: 15px;
+    font-family: quicksand;
 }
 
 .p1{
     font-size: 15px;
 }
+
