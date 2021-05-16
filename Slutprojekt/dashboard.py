@@ -11,12 +11,26 @@ app = dash.Dash(__name__)
 # genererar mockup data
 TE19 = np.random.randint(70,100,34)
 NA19 = np.random.randint(30,100,30)
+df = pd.read_csv("C:/Users/sanna.isaksson/Documents/GitHub/sanna_isaksson_TE19C/Slutprojekt/National_Total_Deaths_by_Age_Group.csv")
 
 df_TE19 = pd.DataFrame({"Närvaro":TE19})
 df_NA19 = pd.DataFrame({"Närvaro":NA19})
 
-# skapa fig
-fig = px.bar(df_NA19, y="Närvaro", title="Närvarograd i procent")
+percentage = dict(
+
+)
+
+for index,col in df.iterrows():
+    deaths = col["Total_Deaths"] / col["Total_Cases"]
+    non_deaths = 1 - deaths
+    percentage[col["Age_Group"]] = deaths, non_deaths
+
+labels = ["Döda", "Smittade"]
+
+#df_pie = pd.DataFrame(data=percentage)
+
+fig = px.pie(df_TE19, names=labels, title="Hur mångs dör")
+
 
 # utseendet
 app.layout = HTML.Div(children=[
@@ -24,7 +38,7 @@ app.layout = HTML.Div(children=[
 
     dcc.Dropdown(
         id = "drop",
-        options = [dict(label = "TE19", value="TE19"), dict(label = "NA19", value="NA19")],
+        options = [dict(label = "TE19", value="TE19"), dict(label = "9-10", value="NA19")],
         value="TE19"
     ),
 
@@ -39,10 +53,13 @@ app.layout = HTML.Div(children=[
     [Input("drop", "value")]
 )
 def update_figure(value):
-    if value == "TE19": df =df_TE19
-    elif value == "NA19": df = df_NA19
+    df_test = df_NA19
+    if value == "0-9": df_test = df_TE19
+    elif value == "10-19": df_test = NA19
+    import sys
+    print(df_NA19)
 
-    fig = px.bar(df, y="Närvaro", title=f"Närvarograd för klass {value}")
+    fig = px.pie(df_test, names=labels, title=f"Närvarograd för klass {value}")
     fig.update_layout(transition_duration=500)
     return fig
 
