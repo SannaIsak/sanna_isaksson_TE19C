@@ -8,13 +8,7 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
-# genererar mockup data
-#TE19 = np.random.randint(70,100,34)
-#NA19 = np.random.randint(30,100,30)
 df = pd.read_csv("C:/Users/sanna.isaksson/Documents/GitHub/sanna_isaksson_TE19C/Slutprojekt/National_Total_Deaths_by_Age_Group.csv")
-
-#df_TE19 = pd.DataFrame({"Närvaro":TE19})
-#df_NA19 = pd.DataFrame({"Närvaro":NA19})
 
 part = []
 ages = df["Age_Group"].unique() 
@@ -27,19 +21,25 @@ for index,col in df.iterrows():
 labels = ["Döda", "Smittade"]
 colors = ["tomato","palegreen"]
 
-df_1 = pd.DataFrame({"0-9":part[0]})
-df_2 = pd.DataFrame({"10-19":part[1]})
-
-fig = px.pie(df_1, names=labels, title="Hur mångs dör")
-
+fig = px.pie()
 
 # utseendet
 app.layout = HTML.Div(children=[
-    HTML.H1(children = "Närvarograd för olika klasser"), 
+    HTML.H1(children = "Olika data för covid-19 fall"), 
 
     dcc.Dropdown(
         id = "drop",
-        options = [dict(label = "0-9", value="0-9"), dict(label = "10-19", value="10-19")],
+        options = [
+        dict(label = "0-9", value="0-9"), 
+        dict(label = "10-19", value="10-19"),
+        dict(label = "20-29", value="20-29"),
+        dict(label = "30-39", value="30-39"),
+        dict(label = "40-49", value="40-49"),
+        dict(label = "50-59", value="50-59"),
+        dict(label = "60-69", value="60-69"),
+        dict(label = "70-79", value="70-79"),
+        dict(label = "80-89", value="80-89"),
+        dict(label = "90+", value="90+")],
         value="0-9"
     ),
 
@@ -54,12 +54,19 @@ app.layout = HTML.Div(children=[
     [Input("drop", "value")]
 )
 def update_figure(value):
-    #df_test = df_1
-    if value == "0-9": df_test = df_1
-    elif value == "10-19": df_test = df_2
-    import sys
+    if value == "0-9": df_pie = part[0]
+    elif value == "10-19": df_pie = part[1]
+    elif value == "20-29": df_pie = part[2]
+    elif value == "30-39": df_pie = part[3]
+    elif value == "40-49": df_pie = part[4]
+    elif value == "50-59": df_pie = part[5]
+    elif value == "60-69": df_pie = part[6]
+    elif value == "70-79": df_pie = part[7]
+    elif value == "80-89": df_pie = part[8]
+    elif value == "90+": df_pie = part[9]
 
-    fig = px.pie(df_test, title=f"Andel smittade vs döda från åldern {value}")
+    fig = px.pie(values=df_pie, names=labels, color=labels, title=f"Andel smittade vs döda från åldern {value}", 
+                    color_discrete_map={"Smittade":"palegreen", "Döda":"tomato"})
     fig.update_layout(transition_duration=500)
     return fig
 
