@@ -8,8 +8,10 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
+# hämtad data med pandas
 df = pd.read_csv("C:/Users/sanna.isaksson/Documents/GitHub/sanna_isaksson_TE19C/Slutprojekt/National_Total_Deaths_by_Age_Group.csv")
 
+# cirkeldiagramet
 part = []
 ages = df["Age_Group"].unique() 
 
@@ -22,6 +24,10 @@ labels = ["Döda", "Smittade"]
 colors = ["tomato","palegreen"]
 
 fig = px.pie()
+
+# linjediagramet
+
+# stapeldiagram
 
 # utseendet
 app.layout = HTML.Div(children=[
@@ -40,13 +46,26 @@ app.layout = HTML.Div(children=[
         dict(label = "70-79", value="70-79"),
         dict(label = "80-89", value="80-89"),
         dict(label = "90+", value="90+")],
-        value="0-9"
+        value="0-9",
+        style = {'width':600}
     ),
 
+    HTML.Div(children=[
+        HTML.Div([
     dcc.Graph(
         id = "graph",
-        figure = fig
+        figure = fig,
+        style = {'width':600, 'display': 'inline-block'}
+        )
+        ]),
+        HTML.Div( [
+    dcc.Graph(
+        id = "graph2",
+        figure = fig,
+        style = {'width':300, 'display': 'inline-block'}
     )
+        ])
+    ], style = {'display': 'inline-block'})
 ])
 
 @app.callback(
@@ -66,7 +85,7 @@ def update_figure(value):
     elif value == "90+": df_pie = part[9]
 
     fig = px.pie(values=df_pie, names=labels, color=labels, title=f"Andel smittade vs döda från åldern {value}", 
-                    color_discrete_map={"Smittade":"palegreen", "Döda":"tomato"})
+                    color_discrete_map={"Smittade":"palegreen", "Döda":"mediumseagreen"})
     fig.update_layout(transition_duration=500)
     return fig
 
