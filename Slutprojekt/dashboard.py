@@ -10,49 +10,49 @@ from plotly.subplots import make_subplots
 
 app = dash.Dash(__name__)
 
-# hämtad data med pandas
+# läser in data med pandas
 df = pd.read_csv("C:/Users/sanna.isaksson/Documents/GitHub/sanna_isaksson_TE19C/Slutprojekt/National_Total_Deaths_by_Age_Group.csv")
+df_daily_deaths = pd.read_csv("Slutprojekt/National_Daily_Deaths.csv")
 
 # cirkeldiagramet
-part = []
-ages = df["Age_Group"].unique() 
+part = [] 
+ages = df["Age_Group"].unique() # unique() - väljer alla unika värden i kolumn "Age_group"
 
+# loopar igenom csv filen
 for index,col in df.iterrows():
-    deaths = col["Total_Deaths"] / col["Total_Cases"]
+    deaths = col["Total_Deaths"] / col["Total_Cases"] # räknar ut andelen som dött av covid-19
     non_deaths = 1 - deaths
-    part.append([deaths, non_deaths])
+    part.append([deaths, non_deaths]) # append() - lägger till i lista part
 
 labels = ["Döda", "Smittade"]
 colors = ["tomato","palegreen"]
 
-fig = px.pie()
+fig = px.pie() # definerar variabeln fig för funktion update_figure
 
 # linjediagramet
-
-df_daily_deaths = pd.read_csv("Slutprojekt/National_Daily_Deaths.csv")
 
 fig2 = px.line(x=df_daily_deaths["Date"], y=df_daily_deaths["National_Daily_Deaths"], title="Antal döda varje dag från 11 mars 2020 till 11 Februari 2021")
 fig2.update_xaxes(title="Datum")
 fig2.update_yaxes(title="Antal")
-fig2.update_traces(line_color="darkgreen")
+fig2.update_traces(line_color="seagreen")
 
 # stapeldiagram
 
-df_Total_Cases = df["Total_Cases"].tolist()
+df_Total_Cases = df["Total_Cases"].tolist() # tolist() - lägger de valda värdena från csv filen i en lista
 df_Total_ICU = df["Total_ICU_Admissions"].tolist()
 df_Total_Deaths = df["Total_Deaths"].tolist()
-ages = df["Age_Group"].unique()
 
+# funktion som visar en figur (stapeldiagram)
 def bar_diag(data, row_num, col_num, color, text):
-    fig3.add_trace(
+    fig3.add_trace( # add_trace - för subplot med plotly
         go.Bar(x=ages, y=data, marker_color=color, name=text),
         row=row_num, col=col_num)
-    fig3.update_layout(height=500, width=1000, title_text="Hur covid-19 påverkat människor per åldersgrupp", xaxis_title="Åldersgrupp", yaxis_title="Antal")
+    fig3.update_layout(height=500, width=1200, title_text="Hur covid-19 påverkat människor per åldersgrupp", xaxis_title="Åldersgrupp", yaxis_title="Antal")
 
 fig3 = make_subplots(rows=1, cols=3)
-bar_diag(df_Total_Cases,1,1,"palegreen", "Totalt antal fall")
+bar_diag(df_Total_Cases,1,1,"palegreen", "Totalt antal fall") # bar_diag - kallar på funktionen med olika värden
 bar_diag(df_Total_ICU,1,2, "mediumseagreen", "Totalt antal intensivvårdspatienter")
-bar_diag(df_Total_Deaths,1,3, "darkgreen", "Totalt antal döda")
+bar_diag(df_Total_Deaths,1,3, "seagreen", "Totalt antal döda")
 
 # utseendet
 app.layout = HTML.Div(children=[
@@ -100,6 +100,7 @@ app.layout = HTML.Div(children=[
     Output("graph", "figure"),
     [Input("drop", "value")]
 )
+# funktion som visar en figur (cirkeldiagram) beroende på variabeln value
 def update_figure(value):
     if value == "0-9": df_pie = part[0]
     elif value == "10-19": df_pie = part[1]
