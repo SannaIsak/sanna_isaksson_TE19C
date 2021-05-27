@@ -12,7 +12,7 @@ app = dash.Dash(__name__)
 
 # läser in data med pandas
 df = pd.read_csv("C:/Users/sanna.isaksson/Documents/GitHub/sanna_isaksson_TE19C/Slutprojekt/National_Total_Deaths_by_Age_Group.csv")
-df_daily_deaths = pd.read_csv("Slutprojekt/National_Daily_Deaths.csv")
+df_daily_deaths = pd.read_csv("C:/Users/sanna.isaksson/Documents/GitHub/sanna_isaksson_TE19C/Slutprojekt/National_Daily_Deaths.csv")
 
 # cirkeldiagramet
 part = [] 
