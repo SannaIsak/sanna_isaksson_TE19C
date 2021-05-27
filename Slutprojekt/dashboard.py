@@ -38,6 +38,7 @@ fig2.update_traces(line_color="seagreen")
 
 # stapeldiagram
 
+# användes även för cirkeldiagramet
 df_Total_Cases = df["Total_Cases"].tolist() # tolist() - lägger de valda värdena från csv filen i en lista
 df_Total_ICU = df["Total_ICU_Admissions"].tolist()
 df_Total_Deaths = df["Total_Deaths"].tolist()
